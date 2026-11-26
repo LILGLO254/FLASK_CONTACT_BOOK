@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Home | Contactly{% endblock %}
+{% block content %}
+<div class="home-page">
+    <section class="hero-card">
+        <div class="hero-copy">
+            <span class="eyebrow">Your personal directory</span>
+            <h1>Keep every connection<br><span>close at hand.</span></h1>
+            <p>Organize the people who matter in one calm, beautiful place.</p>
+            <button class="primary-button" type="button">
+                <i class="fa-solid fa-plus"></i>
+                Add new contact
+            </button>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="profile-card">
+                <div class="profile-avatar">AM</div>
+                <div>
+                    <strong>Alex Morgan</strong>
+                    <span>alex@example.com</span>
+                </div>
+                <i class="fa-solid fa-phone profile-icon"></i>
+            </div>
+            <div class="floating-badge badge-one"><i class="fa-solid fa-envelope"></i></div>
+            <div class="floating-badge badge-two"><i class="fa-solid fa-user-plus"></i></div>
+        </div>
+    </section>
+
+    <section class="dashboard-grid">
+        <article class="directory-panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="section-kicker">Directory</span>
+                    <h2>My Contacts</h2>
+                </div>
+                <div class="contact-count">0 contacts</div>
+            </div>
+            <label class="search-box" for="contact-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="contact-search" type="search" placeholder="Search by name or email">
+                <kbd>/</kbd>
+            </label>
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fa-solid fa-user-group"></i></div>
+                <h3>No contacts yet</h3>
+                <p>Add your first contact and start building your circle.</p>
+                <button class="text-button" type="button">
+                    Add a contact <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+
+        <aside class="summary-column">
+            <article class="summary-card">
+                <span class="summary-icon purple"><i class="fa-solid fa-users"></i></span>
+                <div><strong>0</strong><p>Total contacts</p></div>
+            </article>
+            <article class="summary-card">
+                <span class="summary-icon coral"><i class="fa-solid fa-clock"></i></span>
+                <div><strong>Today</strong><p>Latest addition</p></div>
+            </article>
+        </aside>
+    </section>
+</div>
+{% endblock %}
+

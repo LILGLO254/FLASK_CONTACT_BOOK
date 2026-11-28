@@ -17,6 +17,66 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/add_contact", methods=["GET", "POST"])
+def add_contact():
+
+    if 'user_id' not in session:
+        flash("Please log in first.", category="error")
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        name = request.form.get("name", "").strip()
+        phone = request.form.get("phone", "").strip()
+        email = request.form.get("email", "").strip()
+
+        if not name:
+            flash("Contact name is required.", category="error")
+            return redirect(url_for("add_contact"))
+
+        db = create_connection()
+
+        if db:
+            cursor = None
+
+            try:
+                cursor = db.cursor()
+
+                query = """
+                    INSERT INTO contacts (user_id, name, phone, email)
+                    VALUES (%s, %s, %s, %s)
+                """
+
+                values = (
+                    session['user_id'],
+                    name,
+                    phone or None,
+                    email or None
+                )
+
+                cursor.execute(query, values)
+                db.commit()
+
+                flash("Contact added successfully!", category="success")
+                return redirect(url_for("home"))
+
+            except Exception as error:
+                db.rollback()
+                print("Add contact error:", error)
+                flash("Failed to add contact.", category="error")
+
+            finally:
+                if cursor:
+                    cursor.close()
+                db.close()
+
+        else:
+            flash("Database connection failed!", category="error")
+
+    return render_template("add_contact.html")
+
+
+
 @app.route("/sign_up", methods=['GET', 'POST'])
 def sign_up():
     if request.method == "POST":

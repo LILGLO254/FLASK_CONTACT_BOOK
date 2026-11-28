@@ -7,10 +7,10 @@
             <span class="eyebrow">Your personal directory</span>
             <h1>Keep every connection<br><span>close at hand.</span></h1>
             <p>Organize the people who matter in one calm, beautiful place.</p>
-            <button class="primary-button" type="button">
+            <a href="{{ url_for('add_contact') }}" class="primary-button">
                 <i class="fa-solid fa-plus"></i>
                 Add new contact
-            </button>
+            </a>
         </div>
         <div class="hero-visual" aria-hidden="true">
             <div class="orbit orbit-one"></div>
@@ -46,9 +46,9 @@
                 <div class="empty-icon"><i class="fa-solid fa-user-group"></i></div>
                 <h3>No contacts yet</h3>
                 <p>Add your first contact and start building your circle.</p>
-                <button class="text-button" type="button">
+                <a href="{{ url_for('add_contact') }}" class="text-button">
                     Add a contact <i class="fa-solid fa-arrow-right"></i>
-                </button>
+                </a>
             </div>
         </article>
 
